@@ -181,11 +181,11 @@
                 Bonus += ", AC"
             }
 
-            document.form.rumah.value = Harga
-            document.form.diskon.value = Diskon
-            document.form.biayatambahan.value = Tambahan
-            document.form.bonus.value = Bonus
-            document.form.total.value = Total
+            document.form.rumah.value = 'Rp'+ Harga.toLocaleString('id-ID')
+            document.form.diskon.value = 'Rp'+ Diskon.toLocaleString('id-ID')
+            document.form.biayatambahan.value = 'Rp'+ Tambahan.toLocaleString('id-ID')
+            document.form.bonus.value = 'Rp'+ Bonus.toLocaleString('id-ID')
+            document.form.total.value = 'Rp'+ Total.toLocaleString('id-ID')
 
         }
     </script>
