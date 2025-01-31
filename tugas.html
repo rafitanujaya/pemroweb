@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .gradien {
+            background-image: linear-gradient(to right, blue , darkblue);
+        }
+
+        .gradien-one {
+            background-image: linear-gradient(to right, red , darkred);
+        }
+
+        .button-proses {
+            background-image: linear-gradient(to right, green , darkgreen);
+        }
+    </style>
+</head>
+<body class="w3-monospace">
+    <div class="w3-grey w3-padding">
+        <center>
+        <div class="w3-padding w3-margin w3-center w3-red w3-round-large gradien">
+            <b>House Development </b>
+        </div>
+        <form name="form">
+        <div class="w3-padding w3-margin w3-blue w3-round-large gradien">
+            <table>
+                <tr>
+                    <td>
+                        Cluster
+                    </td>
+                    <td>
+                        <select name="cluster">
+                            <option value=""></option>
+                            <option value="MAWAR">Mawar</option>
+                            <option value="ANGREK">Angrek</option>
+                            <option value="MELATI">Melati</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Type
+                    </td>
+                    <td>
+                        <input type="radio" name="type" value="A"> A
+                        <input type="radio" name="type" value="B"> B
+                        <input type="radio" name="type" value="C"> C
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Jumlah
+                    </td>
+                    <td>
+                        <input type="text" class="w3-round-large" name="jumlah">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Pembayaran
+                    </td>
+                    <td>
+                        <input type="radio" name="pembayaran" value="Cash"> Cash
+                        <input type="radio" name="pembayaran" value="Kredit"> Kredit
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2"><hr></td>
+                </tr>
+                <tr>
+                    <td>
+                        Harga Rumah
+                    </td>
+                    <td>
+                        <input type="text" class="w3-round-large" name="rumah">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Diskon
+                    </td>
+                    <td>
+                        <input type="text" class="w3-round-large" name="diskon">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Biaya Tambahan
+                    </td>
+                    <td>
+                        <input type="text" class="w3-round-large" name="biayatambahan">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Bonus
+                    </td>
+                    <td>
+                        <input type="text" class="w3-round-large" name="bonus">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Total
+                    </td>
+                    <td>
+                        <input type="text" class="w3-round-large" name="total">
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+        <div class="w3-margin w3-padding w3-center w3-blue w3-round-large gradien">
+            <input type="button" class="w3-button button-proses w3-round-xlarge" onclick="proses()" value="Proses">
+            <input type="reset"class="w3-button gradien-one w3-round-xlarge" value="Reset">
+        </div>
+    </form>
+    </div>
+
+    <script>
+        function proses() {
+            Harga = 0;
+            Diskon = 0;
+            Tambahan = 0;
+
+            switch (document.form.cluster.value){
+                case "MAWAR":
+                    if(document.form.type.value == "A" ) Harga = 200000000
+                    if(document.form.type.value == "B") Harga = 250000000
+                    if(document.form.type.value == "C") Harga = 300000000
+                    break
+                case "ANGGREK":
+                    if(document.form.type.value == "A" ) Harga = 300000000
+                    if(document.form.type.value == "B") Harga = 350000000
+                    if(document.form.type.value == "C") Harga = 400000000
+                case "MELATI":
+                    if(document.form.type.value == "A" ) Harga = 400000000
+                    if(document.form.type.value == "B") Harga = 450000000
+                    if(document.form.type.value == "C") Harga = 500000000
+                
+            }
+
+            /*
+            if(document.form.cluster.value == "MAWAR") {
+                if(document.form.type.value == "A" ) Harga = 200000000
+                if(document.form.type.value == "B") Harga = 250000000
+                if(document.form.type.value == "C") Harga = 300000000
+            }
+
+            if(document.form.cluster.value == "ANGGREK") {
+                if(document.form.type.value == "A" ) Harga = 300000000
+                if(document.form.type.value == "B") Harga = 350000000
+                if(document.form.type.value == "C") Harga = 400000000
+            }
+
+            if(document.form.cluster.value == "MELATI") {
+                if(document.form.type.value == "A" ) Harga = 400000000
+                if(document.form.type.value == "B") Harga = 450000000
+                if(document.form.type.value == "C") Harga = 500000000
+            } */
+
+            jumlah = document.form.jumlah.value * 1
+
+            if(document.form.pembayaran.value == "Cash") Diskon = Harga * 0.1
+            if(document.form.pembayaran.value == "Kredit") Tambahan = Harga * 0.2
+
+            Bonus = ""
+            if(document.form.pembayaran.value == "Cash"){
+                Bonus = "TV 70 Inch"
+            }
+
+            HargaT = Harga * jumlah
+
+            Total = HargaT - Diskon + Tambahan
+
+            if(Total > 500000000) {
+                Bonus += ", AC"
+            }
+
+            document.form.rumah.value = Harga
+            document.form.diskon.value = Diskon
+            document.form.biayatambahan.value = Tambahan
+            document.form.bonus.value = Bonus
+            document.form.total.value = Total
+
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <style>
+            .gradien {
+                background-image: linear-gradient(to right, red , yellow);
+            }
+
+            .gradien:hover {
+                background-image: linear-gradient(to right, yellow , red);
+                font-weight: bold;
+                color: blue;
+            }
+        </style>
+</head>
+
+<body class="w3-monospace">
+    <div class="">
+        <div class="w3-container w3-red w3-margin w3-padding w3-center w3-round-large">
+            <b> PROGRAM GAJI PEGAWAI </b>
+        </div>
+
+        <form name="budak">
+            <div class="gradien w3-margin w3-padding w3-round-large">
+
+
+                <table>
+                    <tr>
+                        <td>Nama Pegawai</td>
+                        <td><input type="text" name=""></td>
+                    </tr>
+                    <tr>
+                        <td>Bagian</td>
+                        <td>
+                            <select name="bagian">
+                                <option value=""></option>
+                                <option value="HRD">HRD</option>
+                                <option value="PEMASARAN">PEMASARAN</option>
+                                <option value="PRODUKSI">PRODUKSI</option>
+                                <option value="OB">OB</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Jumlah Anak</td>
+                        <td>
+                            <input type="radio" name="anak" value="1">satu
+                            <input type="radio" name="anak" value="2">dua
+                            <input type="radio" name="anak" value="3">tiga
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3">Tunjangan</td>
+                        <td>
+                            <input type="checkbox" name="makanan" value="makanan"> Makanan
+                        </td>
+                    </tr>
+                    <tr>
+                        <!-- <td></td> -->
+                        <td> <input type="checkbox" name="transportasi" value="transportasi"> Transportasi</td>
+                    </tr>
+                    <tr>
+                        <!-- <td></td> -->
+                        <td> <input type="checkbox" name="kesehatan" value="kesehatan"> Kesehatan</td>
+                    </tr>
+
+                    <tr>
+                        <td>Gaji Pokok</td>
+                        <td><input type="text" class="w3-black w3-round-large" name="gajipokok"></td>
+                    </tr>
+                    <tr>
+                        <td>Tunjangan Anak</td>
+                        <td><input type="text" name="tunjangananak"></td>
+                    </tr>
+                    <tr>
+                        <td>Tunjangan Lain</td>
+                        <td><input type="text" name="tunjanganlain"></td>
+                    </tr>
+                    <tr>
+                        <td>Total</td>
+                        <td><input type="text" name="total"></td>
+                    </tr>
+                </table>
+
+            </div>
+
+            <div class="w3-container w3-blue w3-margin w3-padding w3-center w3-round-large">
+                <input type="button" class="w3-button w3-red w3-round-xlarge gradien" onclick="proses()" value="Proses">
+                <input type="reset" class="w3-button w3-yellow w3-round-xlarge" value="Reset">
+            </div>
+    </div>
+    </form>
+
+    <script>
+        function proses() {
+            let gajiPokok = 0
+            let tunjanganAnak = 0
+            let tjnlain = 0
+            if (document.budak.bagian.value == "HRD")  {
+                gajiPokok = 8000000
+            }
+            if (document.budak.bagian.value == "PEMASARAN")  {
+                gajiPokok = 6000000
+            }
+            if (document.budak.bagian.value == "PRODUKSI")  {
+                gajiPokok = 4000000
+            }
+            if (document.budak.bagian.value == "OB")  {
+                gajiPokok = 3000000
+            }
+    
+            if(document.budak.anak.value == "1") {
+                tunjanganAnak = gajiPokok * 0.1
+            }
+            if(document.budak.anak.value == "2") {
+                tunjanganAnak = gajiPokok * 0.2
+            }
+            if(document.budak.anak.value == "3") {
+                tunjanganAnak = gajiPokok * 0.3
+            }
+
+            if (document.budak.makanan.checked) {
+                tjnlain += gajiPokok * 0.1
+            }
+            if (document.budak.transportasi.checked) {
+                tjnlain += gajiPokok * 0.15
+            }
+            if (document.budak.kesehatan.checked) {
+                tjnlain += gajiPokok * 0.2
+            }
+
+            document.budak.gajipokok.value = gajiPokok
+            document.budak.tunjangananak.value = tunjanganAnak
+            document.budak.tunjanganlain.value = tjnlain
+
+            document.budak.total.value = gajiPokok + tunjanganAnak + tjnlain
+
+
+        }
+
+
+    </script>
+</body>
+
+</html>
